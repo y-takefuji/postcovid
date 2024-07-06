@@ -52,7 +52,7 @@ ax.set_xticklabels(data['Time Period Start Date'][xticks])
 # Rotate x-axis labels by 90 degrees
 plt.xticks(rotation=90)
 plt.ylabel('Percent')
-plt.title('Long COVID trends by age or by sex')
+plt.title('Long COVID trends by age, by sex or by sexual orientation')
 
 # Adjust subplot parameters for better layout
 plt.tight_layout()
