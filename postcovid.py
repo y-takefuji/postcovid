@@ -32,6 +32,11 @@ filtered_df = df[(df['Indicator'] == selected_indicator) &
                  (df['Group'] == selected_group) & 
                  (df['Subgroup'].isin(selected_subgroups))]
 
+# Print the selected individual averages
+for subgroup in selected_subgroups:
+    avg_value = filtered_df[filtered_df['Subgroup'] == subgroup]['Value'].mean()
+    print(f"Average value for {subgroup}: {avg_value:.2f}")
+
 # Save the filtered data to new.csv
 filtered_df.to_csv('new.csv', index=False)
 
@@ -58,6 +63,9 @@ plt.title('Long COVID trends by age, by sex or by sexual orientation')
 plt.tight_layout()
 
 ax.legend()
-plt.savefig('result.png',dpi=300)
+
+# Save the figure with a filename based on the selected indicator and groups
+figure_filename = f"{selected_indicator}_{selected_group}_{'_'.join(selected_subgroups)}.png"
+plt.savefig(figure_filename, dpi=300)
 plt.show()
 
